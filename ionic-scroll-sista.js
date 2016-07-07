@@ -6,7 +6,6 @@
     .directive('scrollSista', ['$document', '$timeout', '$rootScope', '$ionicScrollDelegate', function ($document, $timeout, $rootScope, $ionicScrollDelegate) {
       var TRANSITION_DELAY = 400;
       var defaultDelay = TRANSITION_DELAY * 2;
-      var defaultDuration = TRANSITION_DELAY + 'ms';
       var scaleHeaderElements = ionic.Platform.isAndroid() ? false : true;
 
       function getParentWithAttr(e, attrName, attrValue, depth) {
@@ -272,12 +271,6 @@
             var scrollTop = scrollView.isNative ? e.currentTarget.scrollTop : e.detail.scrollTop;
 
             y = scrollTop >= 0 ? Math.min(defaultEnd, Math.max(0, y + scrollTop - prevScrollTop)) : 0;
-
-            //if we are at the bottom, animate the header/tabs back in
-            // if (scrollView.getScrollMax().top - scrollTop <= contentTop) {
-            //   y = 0;
-            //   duration = defaultDuration;
-            // }
 
             prevScrollTop = scrollTop;
 
