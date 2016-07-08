@@ -6,7 +6,7 @@
     .directive('scrollSista', ['$document', '$timeout', '$rootScope', '$ionicScrollDelegate', function ($document, $timeout, $rootScope, $ionicScrollDelegate) {
       var TRANSITION_DELAY = 400;
       var defaultDelay = TRANSITION_DELAY * 2;
-      var scaleHeaderElements = ionic.Platform.isAndroid() ? false : true;
+      var scaleHeaderElements = !ionic.Platform.isAndroid();
 
       function getParentWithAttr(e, attrName, attrValue, depth) {
         var attr;
@@ -268,7 +268,7 @@
             e = e.originalEvent || e;
 
             var duration = 0;
-            var scrollTop = scrollView.isNative ? e.currentTarget.scrollTop : e.detail.scrollTop;
+            var scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
 
             y = scrollTop >= 0 ? Math.min(defaultEnd, Math.max(0, y + scrollTop - prevScrollTop)) : 0;
 
