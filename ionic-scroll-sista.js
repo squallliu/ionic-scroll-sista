@@ -33,7 +33,7 @@
           //coordinates
           var y, prevY, prevScrollTop;
           //headers
-          var cachedHeader, activeHeader, statusbar, statusbarHeight, headerHeight, contentTop;
+          var cachedHeader, activeHeader, headerHeight, contentTop;
           //subheader
           var subHeader, subHeaderHeight;
           //tabs
@@ -81,16 +81,13 @@
             parent = sideMenu ? sideMenu : body;
             cachedHeader = body.querySelector('[nav-bar="cached"] .bar-header');
             activeHeader = body.querySelector('[nav-bar="active"] .bar-header');
-            statusbar = body.querySelector('.status-bar');
-            statusbarHeight = statusbar ? statusbar.offsetHeight : 0;
-            contentTop = statusbarHeight;
 
             if (!activeHeader) {
               return;
             }
 
             headerHeight = activeHeader.offsetHeight;
-            contentTop += headerHeight;
+            contentTop = headerHeight;
 
             //since some people can have nested tabs, get the last tabs
             tabs = body.querySelectorAll('.tabs');
@@ -286,7 +283,6 @@
 
             translateElements(y, duration);
           });
-
         }
       }
     }]);
